@@ -1,44 +1,54 @@
 import { useFonts } from 'expo-font';
-import { SplashScreen as ExpoSplashScreen, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import SplashScreen from '@/components/SplashScreen';
+import { SplashScreen as ExpoSplashScreen } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-
-ExpoSplashScreen.preventAutoHideAsync();
+import SplashScreen from '@/components/SplashScreen';
+import OnboardingScreen from '@/components/OnboardingScreen';
 
 export const unstable_settings = {
   initialRouteName: '(tabs)', // Start with the tabs screen
 };
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
+  const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
 
   const [isSplashAnimationFinished, setIsSplashAnimationFinished] = useState(false);
+  const [isOnboardingComplete, setIsOnboardingComplete] = useState(false);
 
+  // Hide splash screen once fonts are loaded
   useEffect(() => {
     if (loaded) {
-      ExpoSplashScreen.hideAsync(); // Hide the splash screen once fonts are loaded
+      ExpoSplashScreen.preventAutoHideAsync();
     }
   }, [loaded]);
 
-  const handleAnimationFinish = () => {
-    setIsSplashAnimationFinished(true); // Mark splash screen as finished
+  const handleSplashAnimationFinish = () => {
+    setIsSplashAnimationFinished(true); // Trigger the splash to finish
   };
 
-  if (!loaded || !isSplashAnimationFinished) {
-    return <SplashScreen onAnimationFinish={handleAnimationFinish} />;
+  const handleOnboardingComplete = () => {
+    setIsOnboardingComplete(true); // Trigger the onboarding completion
+  };
+
+  // Splash screen is shown if not finished, then onboarding, and then the root layout
+  if (!isSplashAnimationFinished) {
+    return <SplashScreen onAnimationFinish={handleSplashAnimationFinish} />;
+  }
+
+  if (!isOnboardingComplete) {
+    return <OnboardingScreen onComplete={handleOnboardingComplete} />;
   }
 
   return (
     <SafeAreaProvider>
       <Stack>
-        {/* Main tabs */}
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        {/* Add other screens here as needed */}
+        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </SafeAreaProvider>
   );
