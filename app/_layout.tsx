@@ -6,9 +6,10 @@ import { SplashScreen as ExpoSplashScreen } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import SplashScreen from '@/components/SplashScreen';
 import OnboardingScreen from '@/components/OnboardingScreen';
+import EarlyAccess from '@/components/EarlyAccess';
 
 export const unstable_settings = {
-  initialRouteName: '(tabs)', // Start with the tabs screen
+  initialRouteName: '(tabs)',
 };
 
 export default function RootLayout() {
@@ -19,8 +20,8 @@ export default function RootLayout() {
 
   const [isSplashAnimationFinished, setIsSplashAnimationFinished] = useState(false);
   const [isOnboardingComplete, setIsOnboardingComplete] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  // Hide splash screen once fonts are loaded
   useEffect(() => {
     if (loaded) {
       ExpoSplashScreen.preventAutoHideAsync();
@@ -28,20 +29,27 @@ export default function RootLayout() {
   }, [loaded]);
 
   const handleSplashAnimationFinish = () => {
-    setIsSplashAnimationFinished(true); // Trigger the splash to finish
+    setIsSplashAnimationFinished(true);
   };
 
   const handleOnboardingComplete = () => {
-    setIsOnboardingComplete(true); // Trigger the onboarding completion
+    setIsOnboardingComplete(true);
   };
 
-  // Splash screen is shown if not finished, then onboarding, and then the root layout
+  const handleLoginSubmit = () => {
+    setIsUserLoggedIn(true);
+  };
+
   if (!isSplashAnimationFinished) {
     return <SplashScreen onAnimationFinish={handleSplashAnimationFinish} />;
   }
 
   if (!isOnboardingComplete) {
     return <OnboardingScreen onComplete={handleOnboardingComplete} />;
+  }
+
+  if (!isUserLoggedIn) {
+    return <EarlyAccess />;
   }
 
   return (
