@@ -10,17 +10,19 @@ import {
   Platform,
 } from "react-native";
 
+// Define the type for EarlyAccess props to accept onSubmit function
 interface EarlyAccessProps {
   onSubmit: () => void;
 }
 
-const EarlyAccess = () => {
+const EarlyAccess: React.FC<EarlyAccessProps> = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
   const handleSubmit = () => {
     console.log("Name:", name);
     console.log("Number:", number);
+    onSubmit();  // Call onSubmit when the form is submitted
   };
 
   return (
@@ -107,7 +109,7 @@ const EarlyAccess = () => {
               width: "100%",
               alignItems: "center",
             }}
-            onPress={handleSubmit}
+            onPress={handleSubmit}  // Use the handleSubmit function
           >
             <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>
               Submit
