@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, View } from 'react-native';
-import LottieView from 'lottie-react-native';
+import React, { useEffect, useRef } from "react";
+import { Animated, View, Text } from "react-native";
+import LottieView from "lottie-react-native";
 
 interface SplashScreenProps {
   onAnimationFinish: () => void;
@@ -13,24 +13,51 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationFinish }) => {
     const handleAnimationComplete = () => {
       Animated.timing(opacity, {
         toValue: 0,
-        duration: 10000000,
+        duration: 1000000,
         useNativeDriver: true,
       }).start(() => onAnimationFinish());
     };
 
     handleAnimationComplete();
-
   }, [opacity, onAnimationFinish]);
 
   return (
-    <Animated.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#000', opacity }}>
+    <Animated.View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#FFF",
+      }}
+    >
       <LottieView
-        source={require('../assets/animation/StartingAnimation.json')}
+        source={require("../assets/animation/Study.json")}
         autoPlay
         loop={false}
         onAnimationFinish={onAnimationFinish}
-        style={{ flex: 1, width: '100%', height: '100%' }}
+        style={{
+          width: "70%",
+          height: "70%",
+          marginLeft: -20
+        }}
       />
+      <View
+        style={{
+          position: "absolute",
+          alignItems: "center",
+          paddingTop: 250,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 35,
+            fontWeight: "bold",
+            color: "#0096FF",
+          }}
+        >
+          Studypoint
+        </Text>
+      </View>
     </Animated.View>
   );
 };

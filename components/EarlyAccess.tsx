@@ -29,7 +29,7 @@ const EarlyAccess: React.FC<EarlyAccessProps> = ({ onSubmit }) => {
     <KeyboardAvoidingView
       style={{
         flex: 1,
-        backgroundColor: "black",
+        backgroundColor: "#FFF",
         justifyContent: "center",
         alignItems: "center",
       }}
@@ -37,13 +37,13 @@ const EarlyAccess: React.FC<EarlyAccessProps> = ({ onSubmit }) => {
     >
       <View style={{ alignItems: "center", width: "80%" }}>
         <Image
-          source={require("../assets/images/XikeLogo.png")}
+          source={require("../assets/images/StudypointIcon.png")}
           resizeMode="contain"
-          style={{ height: undefined, aspectRatio: 3.5, marginBottom: 10 }}
+          style={{ height: undefined, aspectRatio: 4, marginBottom: 10 }}
         />
         <Text
           style={{
-            color: "white",
+            color: "#0096FF",
             fontSize: 24,
             fontWeight: "bold",
             marginBottom: 10,
@@ -53,7 +53,7 @@ const EarlyAccess: React.FC<EarlyAccessProps> = ({ onSubmit }) => {
         </Text>
         <Text
           style={{
-            color: "#ccc",
+            color: "#0096FF",
             fontSize: 16,
             marginBottom: 30,
             textAlign: "center",
@@ -65,13 +65,13 @@ const EarlyAccess: React.FC<EarlyAccessProps> = ({ onSubmit }) => {
           style={{
             width: "100%",
             padding: 12,
-            backgroundColor: "#333",
-            color: "white",
+            backgroundColor: "#E5E4E2",
+            color: "#0096FF",
             borderRadius: 8,
             marginBottom: 15,
           }}
           placeholder="Enter your name"
-          placeholderTextColor="#888"
+          placeholderTextColor="#0096FF"
           value={name}
           onChangeText={setName}
         />
@@ -79,20 +79,20 @@ const EarlyAccess: React.FC<EarlyAccessProps> = ({ onSubmit }) => {
           style={{
             width: "100%",
             padding: 12,
-            backgroundColor: "#333",
-            color: "white",
+            backgroundColor: "#E5E4E2",
+            color: "#0096FF",
             borderRadius: 8,
             marginBottom: 15,
           }}
           placeholder="Enter your number"
-          placeholderTextColor="#888"
+          placeholderTextColor="#0096FF"
           keyboardType="phone-pad"
           value={number}
           onChangeText={setNumber}
         />
         <LinearGradient
-          colors={["#B454FF", "#5E1299"]}
-          start={{ x: 0.09, y: 1 }}
+          colors={["#0096FF", "#87CEEB", "#0096FF"]}
+          start={{ x: 0.1, y: 1 }}
           end={{ x: 1, y: 0 }}
           style={{
             marginVertical: 15,

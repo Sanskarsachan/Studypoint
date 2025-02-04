@@ -15,25 +15,16 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       onDone={onComplete}
       pages={[
         {
-          backgroundColor: "#000000",
+          backgroundColor: "#0096FF",
           image: (
             <View
-              style={{ width: "100%", alignItems: "center", marginTop: -60 }}
+              style={{ width: "100%", alignItems: "center", marginTop: -150 }}
             >
-              <Image
-                source={require("../assets/images/XikeLogo.png")}
-                resizeMode="contain"
-                style={{
-                  height: undefined,
-                  aspectRatio: 3.5,
-                  marginBottom: 10,
-                }}
-              />
               <LottieView
-                source={require("../assets/animation/LocationAnimation.json")}
+                source={require("../assets/animation/Onboarding1.json")}
                 autoPlay
                 loop
-                style={{ width: 500, height: 500 }}
+                style={{ width: 300, height: 300 }}
               />
             </View>
           ),
@@ -42,25 +33,16 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
             "Find exclusive offers across restaurants, salons, & shopping spots.",
         },
         {
-          backgroundColor: "#000000",
+          backgroundColor: "#0096FF",
           image: (
             <View
               style={{ width: "100%", alignItems: "center", marginTop: -60 }}
             >
-              <Image
-                source={require("../assets/images/XikeLogo.png")}
-                resizeMode="contain"
-                style={{
-                  height: undefined,
-                  aspectRatio: 3.5,
-                  marginBottom: 10,
-                }}
-              />
               <LottieView
-                source={require("../assets/animation/Test3.json")}
+                source={require("../assets/animation/Onboarding2.json")}
                 autoPlay
                 loop
-                style={{ width: 500, height: 500 }}
+                style={{ width: 300, height: 300, backgroundColor: "#000" }}
               />
             </View>
           ),
@@ -68,53 +50,35 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
           subtitle: "& Watch your wallet grow with every purchase",
         },
         {
-          backgroundColor: "#000000",
+          backgroundColor: "#0096FF",
           image: (
             <View
-              style={{ width: "100%", alignItems: "center", marginTop: -150 }}
+              style={{ width: "100%", alignItems: "center", marginTop: -50 }}
             >
-              <Image
-                source={require("../assets/images/XikeLogo.png")}
-                resizeMode="contain"
-                style={{
-                  height: undefined,
-                  aspectRatio: 3.5,
-                  marginBottom: 20,
-                }}
+              <LottieView
+                source={require("../assets/animation/Onboarding3.json")}
+                autoPlay
+                loop
+                style={{ width: 300, height: 300 }}
               />
-              <Image
-                source={require("../assets/images/HotDeals.png")}
-                resizeMode="contain"
-                style={{ height: undefined, aspectRatio: 7, marginBottom: 20 }}
-              />
-              <SectionDivider title={"COMING SOON"} />
-              <LinearGradient
-                colors={["#B454FF", "#5E1299"]} // Linear gradient colors
-                start={{ x: 0.09, y: 0 }} // Start of gradient (adjust as needed)
-                end={{ x: 0.92, y: 1 }} // End of gradient (adjust as needed)
-                style={{
-                  margin: 12,
-                  borderRadius: 8,
-                  alignItems: "center"
-                }}
-              >
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   style={{
                     paddingHorizontal: 30,
                     paddingVertical: 12,
                     borderRadius: 8,
+                    backgroundColor: "#FFF",
+                    marginTop: 100
                   }}
                 >
                   <Text
-                    style={{ color: "white", fontSize: 18, fontWeight: "bold" }}
+                    style={{ color: "#0096FF", fontSize: 18, fontWeight: "bold" }}
                   >
                     Sign Up Now
                   </Text>
-                </TouchableOpacity>
-              </LinearGradient>
+                </TouchableOpacity> */}
             </View>
           ),
-          title: "",
+          title: "Get new recommendations",
           subtitle: "Sign up now, and you might just get a surprise gift when we launch!",
         },
       ]}

@@ -40,7 +40,7 @@ const SectionDivider: React.FC<SectionDividerProps> = ({ title }) => {
       >
         <Text
           style={{
-            color: '#FFFFFF',
+            color: '#0096FF',
             fontSize: 25,
             fontWeight: 'bold',
           }}

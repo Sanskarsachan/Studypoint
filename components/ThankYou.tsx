@@ -31,13 +31,13 @@ const ThankYou: React.FC<ThankYouProps> = ({ onSubmit }) => {
         backgroundColor: "black",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: -40,
+        marginTop: -20,
       }}
     >
       <Image
-        source={require("../assets/images/XikeLogo.png")}
+        source={require("../assets/images/StudypointIcon.png")}
         resizeMode="contain"
-        style={{ height: undefined, aspectRatio: 3.5, marginBottom: 100 }}
+        style={{ height: undefined, aspectRatio: 6, marginBottom: 100 }}
       />
       <Image
         source={require("../assets/images/Text.png")}
