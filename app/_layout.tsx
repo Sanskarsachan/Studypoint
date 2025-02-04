@@ -7,7 +7,6 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import SplashScreen from '@/components/SplashScreen';
 import OnboardingScreen from '@/components/OnboardingScreen';
 import EarlyAccess from '@/components/EarlyAccess';
-import ThankYou from '@/components/ThankYou';
 
 export const unstable_settings = {
   initialRouteName: '(tabs)', // Adjust this if necessary for initial routing
@@ -65,11 +64,6 @@ export default function RootLayout() {
   // Early Access Phase (user is not logged in yet)
   if (!isUserLoggedIn) {
     return <EarlyAccess onSubmit={handleLoginSubmit} />;
-  }
-
-  // Thank You Phase (user has submitted early access)
-  if (!isSubmittedEarlyAccess) {
-    return <ThankYou onSubmit={handleEarlyAccessSubmit} />;
   }
 
   // After all phases, render main app
