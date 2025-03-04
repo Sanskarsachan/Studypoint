@@ -14,17 +14,19 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.tint,
+        tabBarActiveTintColor: "#FFFFFF",
         tabBarInactiveTintColor: Colors.textSecondary,
         tabBarStyle: {
-          backgroundColor: Colors.background,
+          backgroundColor: "#0096FF",
           borderTopColor: Colors.border,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
         },
         headerStyle: {
-          backgroundColor: Colors.background,
+          backgroundColor: "#0096FF",
         },
         headerTitleStyle: {
-          color: Colors.text,
+          color: "#FFFFFF",
           fontSize: 18,
           fontWeight: 'bold',
         },
@@ -34,7 +36,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          headerTitle: 'Welcome',
+          headerTitle: 'Welcome to Studypoint',
         }}
       />
       <Tabs.Screen

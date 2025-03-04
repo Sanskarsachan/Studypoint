@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import YouTube from 'react-native-youtube';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import Colors from '@/constants/Colors';
 
 interface YouTubeVideoCardProps {
   videoId: string;
@@ -11,82 +11,65 @@ interface YouTubeVideoCardProps {
   apiKey: string;
 }
 
+const { width } = Dimensions.get('window');
+
 const YouTubeVideoCard: React.FC<YouTubeVideoCardProps> = ({
-  videoId,
   title,
   description,
   thumbnailUrl,
   onPress,
-  apiKey,
 }) => {
   return (
-    <View style={styles.cardContainer}>
-      {/* Displaying Thumbnail Image */}
+    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.7}>
       <Image
         source={{ uri: thumbnailUrl }}
         style={styles.thumbnail}
+        resizeMode="cover"
       />
-      
-      {/* YouTube Player Component */}
-      <YouTube
-        videoId={videoId}
-        apiKey={apiKey}
-        play={false}
-        fullscreen={false}
-        loop={false}
-      />
-      
-      {/* Video Title */}
-      <Text style={styles.title}>{title}</Text>
-      
-      {/* Video Description */}
-      <Text style={styles.description}>{description}</Text>
-      
-      {/* Button to simulate "Play" functionality */}
-      <TouchableOpacity onPress={onPress}>
-        <Text style={styles.playButton}>Watch Video</Text>
-      </TouchableOpacity>
-    </View>
+      <View style={styles.content}>
+        <Text style={styles.title} numberOfLines={2}>
+          {title}
+        </Text>
+        <Text style={styles.description} numberOfLines={2}>
+          {description}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  cardContainer: {
-    marginBottom: 20,
+  card: {
     backgroundColor: '#fff',
-    borderRadius: 8,
+    borderRadius: 12,
+    overflow: 'hidden',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-    padding: 10,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   thumbnail: {
     width: '100%',
-    height: 200,
-    borderRadius: 8,
+    height: width * 0.5625, // 16:9 aspect ratio
   },
-  youtubePlayer: {
-    height: 200,
-    width: '100%',
-    borderRadius: 8,
-    marginVertical: 10,
+  content: {
+    padding: 12,
   },
   title: {
-    fontWeight: 'bold',
     fontSize: 16,
-    marginVertical: 5,
+    fontWeight: '600',
+    color: Colors.text,
+    marginBottom: 4,
   },
   description: {
-    color: '#555',
-    marginVertical: 5,
-  },
-  playButton: {
-    color: 'blue',
-    marginTop: 10,
-    fontWeight: 'bold',
+    fontSize: 14,
+    color: Colors.textSecondary,
+    lineHeight: 20,
   },
 });
 
-export default YouTubeVideoCard;
+export default React.memo(YouTubeVideoCard);
